@@ -1,0 +1,20 @@
+{
+  "name": "verkefni1",
+  "version": "1.0.0",
+  "description": "Verkefni 1",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest ./test/*.*.js",
+    "build": "node ./src/build.js"
+  },
+  "author": "Abel",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^27.4.7"
+  },
+  "devDependencies": {
+    "stylelint": "^14.2.0",
+    "stylelint-config-standard": "^24.0.0"
+  }
+}
