@@ -1,41 +1,75 @@
 import { readFile, readdir, writeFile } from 'fs/promises';
+import { join } from 'path';
+import { dataHTML, indexHTML, noDataHTML } from './htmlMaker.js';
+import { parse } from './parser.js';
+import { calc } from './calc.js';
 
+/* eslint-disable no-await-in-loop */
 
 const DATA_DIR = './data';
+const OUTPUT_DIR = './dist';
+
+/**
+ *
+ * @param {String} file
+ * @returns String with all contents of file
+ */
+export async function readDataFile(file) {
+  let path = '';
+  let data = Buffer;
+  try {
+    path = join(DATA_DIR, file)
+    data = await readFile(path);
+
+  } catch (e) {
+    console.error(e);
+  }
+  return data.toString('utf-8');
+}
 
 async function main() {
-    const files = await readdir(DATA_DIR);
+  const files = await readdir(DATA_DIR);
 
-    console.log("Files : " + files);
-    // Búa til Grunnsíðu index.html
-    const filename = 'index.html';
-    const indexSite = `<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>${filename}</title>
-        <!-- Stylesheets -->
-        <link rel="stylesheet" href="styles.css" type="text/css">
-        <link rel="stylesheet" href="grid-overlay.css" type="text/css">
-    </head>
-    <body>
-    <h1>Gagnavinnsla</h1>
-    </body>
-</html>
-`;
-    try {
-        const result = await writeFile(`./dist/${filename}`, indexSite, { flag: 'w' });
-    }catch(e) {
-        console.error(`Failed to create ${index.html}`, e);
+  const dataCalcs = [];
+  const noData = [];
+  let dataCounter = 0;
+
+  for (const file of files) {
+    const content = await readDataFile(file);
+
+    const parsed = parse(content);
+    const dataset = file.split('.')[0];
+
+    const calcs = calc(parsed);
+    dataCalcs[dataCounter] = [calcs, dataset];
+    dataCounter += 1;
+
+    const filename = join(OUTPUT_DIR, `Dataset${dataset}.html`);
+    let html = '';
+
+    if (!parsed) {
+      html = noDataHTML(dataset);
+      noData.push(parseInt(dataset, 10));
+    } else {
+      html = dataHTML(calcs, dataset);
     }
-    // Búa til linka á hvert einasta dataset
 
-    // Sannreyna gögnin og lagfæra
+    try {
+      await writeFile(filename, html);
+    } catch (e) {
+      console.error(`Error:${e} occured writing file`);
+    }
+  }
 
-    // Búa til datatable með gögnum úr data möppu
-    
-    
+  dataCalcs.sort((a, b) => a[1] - b[1]);
+  noData.sort((a, b) => a - b);
+  const index = indexHTML(dataCalcs, noData);
+
+  try {
+    await writeFile('./dist/index.html', index, { flag: 'w' });
+  } catch (e) {
+    console.error(`Error:${e} Failed to create index.html`);
+  }
 
 }
 
