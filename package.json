@@ -5,16 +5,32 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_OPTIONS='--experimental-vm-modules' jest ./test/*.*.js",
-    "build": "node ./src/build.js"
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest ./*.test.js",
+    "build": "node ./src/build.js",
+    "lint": "concurrently npx:lint:*",
+    "lint:eslint": "eslint ./src/**/*.js",
+    "lint:stylelint": "stylelint ./public/styles.css",
+    "prettier": "prettier --write .",
+    "sass": "sass styles.scss dist/styles.css",
+    "sass-watch": "sass --watch *.scss styles.css"
   },
   "author": "Abel",
   "license": "ISC",
-  "dependencies": {
-    "jest": "^27.4.7"
-  },
   "devDependencies": {
+    "concurrently": "^7.0.0",
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "jest": "^27.4.7",
+    "node-sass": "^7.0.1",
+    "prettier": "^2.5.1",
+    "sass": "^1.49.0",
     "stylelint": "^14.2.0",
+    "stylelint-config-sass-guidelines": "^9.0.1",
     "stylelint-config-standard": "^24.0.0"
+  },
+  "dependencies": {
+    "mathjs": "^10.1.0"
   }
 }
