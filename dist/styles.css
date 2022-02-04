@@ -9,9 +9,9 @@ body {
 }
 
 .row {
+  margin-bottom: 10px;
   margin-left: -10px;
   margin-right: -10px;
-  margin-bottom: 10px;
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -350,30 +350,30 @@ body {
 }
 
 h1 {
+  font-size: 3em;
   margin: 0 auto;
   text-align: center;
-  font-size: 3em;
 }
 
 .card {
-  display: flex;
   background-color: #fff;
-  width: 100%;
-  height: 100%;
-  transition: transform ease 1s;
-  overflow: hidden;
+  display: flex;
   flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  transition: transform ease 1s;
+  width: 100%;
 }
 .card-title {
   background-image: url("tiger.jpg");
-  width: 100%;
-  color: white;
+  color: #fff;
   text-align: center;
+  width: 100%;
 }
 .card-body {
   background-color: #f2f3f4;
+  border: 1px solid #000;
   height: 100%;
-  border: 1px solid black;
 }
 
 .card:hover {
@@ -385,8 +385,8 @@ h1 {
 }
 
 .img {
-  width: 100%;
   height: 100%;
+  width: 100%;
 }
 .img img {
   object-fit: cover;
@@ -395,20 +395,14 @@ h1 {
 
 h6 {
   font-size: 1.4em;
-  margin-top: 1em;
   margin-bottom: 1em;
+  margin-top: 1em;
 }
 
 .calcs {
   display: flex;
-  justify-content: space-evenly;
   flex-direction: row;
-}
-.calcs:nth-child(-2n+3) {
-  border-bottom: 1px solid black;
-}
-.calcs:nth-child(-2n+3) h6 {
-  margin-bottom: 0.5em;
+  justify-content: space-evenly;
 }
 .calcs-Big {
   display: flex;
@@ -417,7 +411,14 @@ h6 {
   padding-right: 1.5em;
 }
 .calcs-Big:last-child {
-  border-top: 1px solid black;
+  border-top: 1px solid #000;
+}
+
+.calcs:nth-child(-2n+3) {
+  border-bottom: 1px solid #000;
+}
+.calcs:nth-child(-2n+3) h6 {
+  margin-bottom: 0.5em;
 }
 
 a {
@@ -425,43 +426,44 @@ a {
 }
 
 figcaption {
-  text-align: center;
   font-size: 2.4em;
+  text-align: center;
 }
 
 table {
-  width: 100%;
+  border: 2px solid #000;
   margin-bottom: 2em;
-  border: 2px solid black;
+  width: 100%;
 }
 
 tr {
   height: 2rem;
-  width: 100%;
   justify-content: space-evenly;
+  width: 100%;
 }
 
-th, td {
-  width: 12.5%;
+th,
+td {
   font-size: 2rem;
   height: 3rem;
   text-align: center;
+  width: 12.5%;
 }
 
 .noData {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
 }
 
 figure {
   display: flex;
-  width: 60%;
+  flex-direction: column;
   height: 100%;
   justify-content: center;
-  flex-direction: column;
+  width: 60%;
 }
 
 .noData img {
@@ -470,26 +472,26 @@ figure {
 
 .links {
   display: flex;
-  width: 100%;
   justify-content: space-between;
+  width: 100%;
 }
 .links .link {
-  height: 3em;
-  width: 10em;
-  transition-duration: 1s;
-  background: transparent;
-  padding: 0.3em 1em;
-  display: flex;
   align-items: center;
+  background: transparent;
+  border: 2px solid #fff;
   border-radius: 1em;
-  border: 2px solid white;
+  display: flex;
+  height: 3em;
+  padding: 0.3em 1em;
+  transition-duration: 1s;
+  width: 10em;
 }
 .links .link:hover {
-  background-color: white;
+  background-color: #fff;
 }
 .links h4 {
+  color: #000;
   margin: 0 auto;
-  color: black;
 }
 
 @media (max-width: 480px) {
@@ -498,7 +500,8 @@ figure {
   }
 }
 @media (max-width: 900px) {
-  th, td {
+  th,
+td {
     font-size: 4vw;
   }
 }

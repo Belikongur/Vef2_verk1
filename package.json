@@ -9,7 +9,7 @@
     "build": "node ./src/build.js",
     "lint": "concurrently npx:lint:*",
     "lint:eslint": "eslint ./src/**/*.js",
-    "lint:stylelint": "stylelint ./public/styles.css",
+    "lint:stylelint": "stylelint styles.scss ./**/*.scss",
     "prettier": "prettier --write .",
     "sass": "sass styles.scss dist/styles.css",
     "sass-watch": "sass --watch *.scss styles.css"

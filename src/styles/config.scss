@@ -5,7 +5,7 @@ $columns: 12;
 $gutter: 20px;
 
 body {
-  background-image: linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% );
+  background-image: linear-gradient(95.2deg, rgba(173, 252, 234, 1) 26.8%, rgba(192, 229, 246, 1) 64%);
 }
 
 
@@ -22,9 +22,9 @@ $breakpoints: (
 }
 
 @mixin grid-margin-offset {
+  margin-bottom: calc($gutter / 2);
   margin-left: - calc($gutter / 2);
   margin-right: - calc($gutter / 2);
-  margin-bottom: calc($gutter / 2);
   margin-top: calc($gutter / 2);
 }
 
