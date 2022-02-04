@@ -1,0 +1,59 @@
+@import 'config';
+
+.grid {
+  margin: 0 auto;
+  max-width: $max-width;
+  overflow: hidden;
+}
+
+.row {
+  @include grid-margin-offset;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between
+}
+
+.col {
+  @include grid-padding-offset;
+  margin-bottom: 15px;
+  width: 100%;
+}
+.col-34 {
+  width: 30%;
+}
+
+
+// Grid column setup
+@for $i from 1 through $columns {
+  $col-width: calc(100% / $columns * $i);
+
+  @include media('md') {
+    .col-md-#{$i} {
+      width: $col-width;
+    }
+
+    .offset-col-md-#{$i} {
+      margin-left: $col-width;
+    }
+  }
+
+  @include media('sm') {
+    .col-sm-#{$i} {
+      width: $col-width;
+    }
+
+    .offset-col-sm-#{$i} {
+      margin-left: $col-width;
+    }
+  }
+
+  .col-#{$i} {
+    width: $col-width;
+  }
+
+  .offset-col-#{$i} {
+    margin-left: $col-width;
+  }
+}
+

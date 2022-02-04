@@ -1,0 +1,78 @@
+@import 'config';
+h1 {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 3em;
+}
+
+
+.card {
+  display: flex;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  transition: transform ease 1s;
+  overflow: hidden;
+  flex-direction: column;
+  &-title {
+    background-image: url('tiger.jpg');
+    width: 100%;
+    color: white;
+    text-align: center;
+  }
+  &-body {
+    background-color: #f2f3f4;
+    height: 100%;
+    border: 1px solid black;
+  }
+}
+.card:hover {
+  transform: scale(0.8);
+}
+
+.nd {
+  text-align: center;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+h6 {
+  font-size: 1.4em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.calcs {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  &:nth-child(-2n+3){
+    border-bottom: 1px solid black;
+    h6 {
+      margin-bottom: 0.5em;
+    }
+  }
+  &-Big {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    &:last-child {
+      border-top: 1px solid black;
+    }
+  }
+}
+
+
+a {
+  text-decoration: none;
+}
+
+
